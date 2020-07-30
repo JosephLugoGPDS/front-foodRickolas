@@ -1,0 +1,123 @@
+.login-container {
+  margin: 10% auto;
+}
+
+/*Para el file*/
+
+.box input {
+  cursor: pointer;
+  /* position: fixed; */
+  /*top: calc(70% + 3%);/*1.2+*/
+  /*right: calc(70% + 0.65%);/*0.55+*/
+  opacity: 0;
+  /* display: inline-flex; */
+  width: 62px;
+  margin: 8px auto;
+  position: relative; /*uno encima de otro*/
+}
+
+#open-file {
+  /* display: inline-flex; */
+  position: absolute; /*uno encima de otro*/
+  background-color: rgba(233, 30, 98, 0.9);
+  width: 65px;
+  color: #7028e4;
+  outline: none;
+  font-size: 32px;
+  cursor: pointer;
+  border: 0;
+  transition: all 150ms ease;
+  border-radius: 50%;
+  box-shadow: 0 2px 2px rgba(0, 0, 0, 0.3);
+  /* position: fixed; */
+  /* top: 70%; */
+  /* right: 70%; */
+  margin: -5px auto;
+  padding: 0.3rem 0.3rem;
+}
+
+/*Login*/
+
+.login-form-1 img {
+  display: block;
+}
+
+.login-form-1 {
+  border-radius: 5px;
+  box-shadow: 0 5px 8px 0 rgba(123, 18, 194, 0.2),
+    0 9px 26px 0 rgba(123, 18, 194, 0.19);
+  padding: 5%;
+}
+.login-form-1 h3 {
+  text-align: center;
+  color: #333;
+}
+.login-form-2 {
+  border-radius: 5px;
+  box-shadow: 0 5px 8px 0 rgba(123, 18, 194, 0.2),
+    0 9px 26px 0 rgba(123, 18, 194, 0.19);
+  padding: 5%;
+  background: #7028e4;
+}
+.login-form-2 h3 {
+  text-align: center;
+  color: #fff;
+}
+.login-container form {
+  padding: 5%;
+}
+.btnSubmit {
+  width: 50%;
+  height: 40px;
+  border-radius: 1rem;
+  padding: 1.5%;
+  border: none;
+  cursor: pointer;
+  /* centrar */
+  margin: 20px calc(-25%);
+  position: relative;
+  top: 50%;
+  left: 50%;
+}
+.login-form-1 .btnSubmit {
+  color: #fff;
+  background-color: #7028e4;
+}
+.login-form-2 .btnSubmit {
+  background-color: #fff;
+  color: #7028e4;
+}
+.login-form-2 .ForgetPwd {
+  color: #fff;
+  font-weight: 600;
+  text-decoration: none;
+}
+.login-form-1 .ForgetPwd {
+  color: #7028e4;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+/* agregar borde blaco simulando separacion Bootstrap */
+/* div[class^='col-']{
+    border: 5px solid white;
+  } */
+/*centrando los dos login*/
+.row {
+  justify-content: space-evenly;
+}
+
+/*Logerase*/
+
+
+.enlace-cuenta {
+  display: inline;
+  border: none;
+  color: #a972cb;
+  text-decoration: none;
+}
+
+.enlace-cuenta:hover {
+  color: #7028e4;
+  text-decoration: none;
+}

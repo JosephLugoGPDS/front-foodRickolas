@@ -1,0 +1,21 @@
+/****Customizando Swet alert2***/
+button.swal2-confirm{
+    justify-content: space-between;
+  }
+  button.swal2-confirm.swal2-styled{
+    border-radius: 16px;
+    background-color: #7028e4;
+  }
+  button.swal2-cancel.swal2-styled{
+    border-radius: 16px;
+    background-color: rgba(255, 71, 9, 0.4);
+  }
+  h2#swal2-title.swal2-title{
+    color: #7028e4;
+  }
+  
+  div.swal2-actions{
+    /* display: flex; */
+    flex-direction: row-reverse;
+    justify-content: space-evenly;
+  }
