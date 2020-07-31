@@ -16,7 +16,7 @@ export const ProductoScreen = ({producto, consultarApi}) => {
     //eliminar producto
     const eliminarProducto = (idProducto) =>{
         Swal.fire({
-            title: 'Desea eliminar su cuenta?',           
+            title: 'Desea eliminar el producto?',           
             showCancelButton: true,
             confirmButtonText: 'Si, eliminar',
             customClass: 'custom-cancel'
@@ -29,7 +29,7 @@ export const ProductoScreen = ({producto, consultarApi}) => {
                     if(res.status === 200){//ver
                         Swal.fire({
                             icon: 'warning',
-                            text: 'Cuenta de usuario eliminada.',
+                            text: 'Producto eliminado',
                         })
                     }//ver
                     //llamar a la DB

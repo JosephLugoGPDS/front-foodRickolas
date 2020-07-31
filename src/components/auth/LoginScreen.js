@@ -19,8 +19,12 @@ export const LoginScreen = (props) => {
         email: '',
         password: ''
     });
+    //State con los datos del formulario
+    const [cliente, guardarCliente] = useState({});
+
 
     const { email, password } = usuario;
+    const {emailCliente, passwordCliente } = cliente;
 
     //Iniciar sesion en el servidor
     const iniciarSesion = async e => {
@@ -28,7 +32,7 @@ export const LoginScreen = (props) => {
         //autenticar usuario
         try {
             const respuesta = await clienteAxios.post('/signin', usuario);
-            // console.log(respuesta);
+            //console.log(respuesta);
             // extraer el token y colocarlo en localstorage
             const { token } = respuesta.data;
             localStorage.setItem('token', token);
@@ -57,6 +61,38 @@ export const LoginScreen = (props) => {
         }
     }
 
+    const iniciarCliente = async e=>{
+        e.preventDefault();
+        try {
+            const client = await clienteAxios.post('/signinCliente', cliente);
+            
+            //colocar en el state
+            guardarAuth({
+                token: '',
+                auth: true
+            })
+            guardarCliente(client.data)
+            //alerta
+            Swal.fire(
+                'Login Correcto',
+                'Has iniciado sesion',
+                'success'
+            )
+            //Guardamos el id en localStorage para definir el cliente
+            localStorage.setItem('_id',client.data._id);
+            //redireccionar
+            props.history.push('/productoscliente')
+            
+        } catch (error) {
+            console.log(error);
+            Swal.fire({
+                type: 'error',
+                title: 'Hubo un error',
+                text: 'login incorrecto'
+            })
+        }
+    }
+
 
     //almacenar lo que esceribe el usuario en el state
     const leerDatos = e => {
@@ -66,44 +102,43 @@ export const LoginScreen = (props) => {
         })
     }
 
+    //almacenar lo que esceribe el cliente en el state
+    const leerCliente = e => {
+        guardarCliente({
+            ...cliente,
+            [e.target.name]: e.target.value
+        })
+    }
+
     return (
         <div className="container login-container">
             <div className="row">
 
-
                 <div className="col-lg-5 login-form-1">
                     <h3>Cliente</h3>
-                    <form>
-                        {/* <div className="form-group">
-                            <input
-                                type="text"
-                                className="form-control"
-                                placeholder="Nombre"
-                            />
-                        </div> */}
+                    <form
+                    onSubmit={iniciarCliente}
+                    >
                         <div className="form-group">
                             <input
                                 type="email"
+                                name="email"
+                                value={emailCliente}
                                 className="form-control"
                                 placeholder="Correo"
+                                onChange={leerCliente}
                             />
                         </div>
                         <div className="form-group">
                             <input
                                 type="password"
+                                name="password"
+                                value={passwordCliente}
                                 className="form-control"
                                 placeholder="Contraseña"
+                                onChange={leerCliente}
                             />
                         </div>
-
-                        {/* <div className="form-group">
-                            <input
-                                type="password"
-                                className="form-control"
-                                placeholder="Repita la contraseña"
-                            />
-                        </div> */}
-
                         <div className="form-group">
                             <input
                                 type="submit"

@@ -1,11 +1,13 @@
 import React, { useState } from 'react';
-import { Link } from "react-router-dom";
+import { Link, withRouter } from "react-router-dom";
+import clienteAxios from '../../config/axios';
+import Swal from 'sweetalert2';
 
 
 
-export const SignUpScreen = () => {
+export const SignUpScreen = ({history}) => {
 
-    const [usuario, guardarUsuario] = useState({
+    const [cliente, guardarCliente] = useState({
         nombre: '',
         apellido: '',
         dni: '',
@@ -15,19 +17,52 @@ export const SignUpScreen = () => {
         confirmar: ''
     });
     
-    const {nombre, apellido, dni, telefono, email, password, confirmar} = usuario;
-    
-    
     
     const onChange = e =>{
-        guardarUsuario({
-            ...usuario,
+        guardarCliente({
+            ...cliente,
             [e.target.name] :  e.target.value
         })
     }
     
     const onSubmit = e =>{
         e.preventDefault();
+         //pasamos nuestro cliente del state
+        clienteAxios.post('/clientes', cliente)
+         //retornamos la promesa
+         .then(res => {
+             //validar si hay errores de rango
+             // console.log(res);
+             if (res.data.code === 11000) {
+                 Swal.fire({
+                     icon: 'error',
+                     title: 'Ops...',
+                     text: 'Email ya registrado!'
+                 });            
+             } else {
+                 Swal.fire({
+                     icon: 'success',
+                     title: 'Registro exitoso',
+                     text: res.data.message
+                 });
+                 //Almaceno en el localStorage al cliente
+                //  localStorage.setItem('_id',client.data._id)
+                 //Redireccionar a productos,
+                 history.push('/');
+             }
+             
+
+         });
+    }
+
+    //validar formulario
+    const validarCliente = () => {
+        //Destructuring
+        const { nombre, apellido, email, password, telefono, dni, confirmar } = cliente;
+        //revisar que los campos esten completos, las prpiedades del objeto tengan contenido
+        let valido = !nombre.length || !apellido.length || !email.length || !password.length || !telefono.length || !dni.length & password === confirmar;
+        //return true false
+        return valido;
     }
 
     return (
@@ -46,7 +81,6 @@ export const SignUpScreen = () => {
                                 className="form-control"
                                 placeholder="Nombre"
                                 name="nombre"
-                                value={nombre}
                                 onChange={onChange}
                             />
                             <input
@@ -54,7 +88,6 @@ export const SignUpScreen = () => {
                                 className="form-control"
                                 placeholder="Apellido"
                                 name="apellido"
-                                value={apellido}
                                 onChange={onChange}
                             />
                         </div>
@@ -65,7 +98,6 @@ export const SignUpScreen = () => {
                                 className="form-control"
                                 placeholder="D.N.I."
                                 name="dni"
-                                value={dni}
                                 onChange={onChange}
                             />
                             <input
@@ -74,7 +106,6 @@ export const SignUpScreen = () => {
                                 className="form-control"
                                 placeholder="Teléfono"
                                 name="telefono"
-                                value={telefono}
                                 onChange={onChange}
                             />
                         </div>
@@ -85,7 +116,6 @@ export const SignUpScreen = () => {
                                 className="form-control"
                                 placeholder="Correo"
                                 name="email"
-                                value={email}
                                 onChange={onChange}
                             />
                             <input
@@ -94,7 +124,6 @@ export const SignUpScreen = () => {
                                 className="form-control"
                                 placeholder="Contraseña"
                                 name="password"
-                                value={password}
                                 onChange={onChange}
                             />
                             <input
@@ -103,7 +132,6 @@ export const SignUpScreen = () => {
                                 className="form-control"
                                 placeholder="Repetir Contraseña"
                                 name="confirmar"
-                                value={confirmar}
                                 onChange={onChange}
                             />
                         </div>
@@ -111,7 +139,7 @@ export const SignUpScreen = () => {
                             type="submit"
                             className="btnSubmit"
                             value="Registrarse"
-                            // disabled={validarCliente()}
+                            disabled={validarCliente()}
                         />
                         <p className="message text-center">Leíste los términos?
                         <Link to={'/politica'} className="politica">Política y Privacidad</Link>
@@ -126,4 +154,4 @@ export const SignUpScreen = () => {
     );
 }
 
-export default SignUpScreen;
+export default withRouter(SignUpScreen);

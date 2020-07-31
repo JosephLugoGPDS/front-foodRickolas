@@ -15,10 +15,15 @@ import { Clientes } from '../components/clients/Clientes';
 import { NuevoCliente } from '../components/clients/NuevoCliente';
 import { EditarCliente } from '../components/clients/EditarCliente';
 import { PoliticaPrivacidad } from '../components/clients/PoliticaPrivacidad';
+//Client
+import { ClienteIdScreen } from '../components/clients/ClienteIdScreen';
 //PRoductos
 import { Productos } from '../components/products/Productos';
 import { NuevoProducto } from '../components/products/NuevoProducto'
 import { EditarProducto } from '../components/products/EditarProducto';
+//Productos cliente
+import { ProductosCliente } from '../components/products/ProductosCliente';
+
 
 //Pedidos
 import { Pedidos } from '../components/pedidos/Pedidos';
@@ -54,10 +59,16 @@ export const AppRouter = () => {
                     <Route exact path="/clientes/editar/:id" component={ EditarCliente } />
                     <Route exact path="/politica" component={ PoliticaPrivacidad } />
 
+                    {/* Client */}
+                    <Route exact path="/cliente/:id" component={ ClienteIdScreen } />
+
+
                     {/* Productos */}
                     <Route exact path="/productos" component={ Productos } />
                     <Route exact path="/productos/nuevo" component={ NuevoProducto } />
                     <Route exact path="/productos/editar/:id" component={ EditarProducto } />
+                    {/* Productos Cliente */}
+                    <Route exact path="/productoscliente" component={ ProductosCliente } />
 
                     {/* Pedidos */}
                     <Route exact path="/pedidos" component={ Pedidos } />

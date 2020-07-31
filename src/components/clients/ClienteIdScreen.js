@@ -1,63 +1,78 @@
-import React, { useState } from 'react';
-
+import React, { useState, useCallback, useEffect } from 'react'
+import { withRouter, Link } from 'react-router-dom';
 import Swal from 'sweetalert2';
-
-import { withRouter } from 'react-router-dom';
 import clienteAxios from '../../config/axios';
 
-export const NuevoCliente = ({history}) =>{
-    //cliente=state guardarCliente=funcion guardar state
-    const [cliente, guardarCliente] = useState({
+export const ClienteIdScreen = () => {
+    //obtener id
+    // console.log(localStorage.getItem('_id'))
+    const id = localStorage._id;
+    // console.log(id);
+
+    //cliente=state datosCliente=funcion guardar state
+    const [cliente, datosCliente] = useState({
         nombre: '',
         apellido: '',
-        email: '',
-        password: '',
         telefono: '',
-        dni: ''
+        dni: '',
+        email: '',
+        password: ''
     });
+
+    //Query a la aPI, useCallback y
+    const consultarAPI = useCallback(
+        async () => {
+            const clienteConsulta = await clienteAxios.get(`/clientes/${id}`);
+            console.log(clienteConsulta.data);
+            //colocar la data en el state
+            datosCliente(clienteConsulta.data);
+        }, [id]
+    )
+
     //leer los datos del formulario
     const actualizarState = e => {
-        // console.log([e.target.name] +":"+ e.target.value );
         //almacenar lo que se escribe en el state
-        guardarCliente({
+        datosCliente({
             //obtener una copia del state actual
             ...cliente,
             [e.target.name]: e.target.value
-        });
-        // console.log(cliente);
+        })
     }
 
+    //useEffect, cuando el componente carga
+    useEffect(() => {
+        consultarAPI();
+    }, [consultarAPI]);
+
     //Añade en la REST API un cliente nuevo
-    const agregarCliente = e => {
+    const actualizarCliente = e => {
         e.preventDefault();
 
-        //enviar peticion con axios
-        //nuestra direccion POST del backend
-        //pasamos nuestro cliente del state
-        clienteAxios.post('/clientes', cliente)
-            //retornamos la promesa
+        //enviar la peticion por axios para actualizar
+        clienteAxios.put(`/clientes/${cliente._id}`, cliente)
             .then(res => {
-                //validar si hay errores de rango
                 // console.log(res);
                 if (res.data.code === 11000) {
                     Swal.fire({
+                        showConfirmButton: false,
                         icon: 'error',
-                        title: 'Ops...',
-                        text: 'Email ya registrado!'
-                    });            
+                        html:
+                            '<h2>Ops...</h2>, ' +
+                            'Email ya registrado!'
+                    });
                 } else {
                     Swal.fire({
                         icon: 'success',
-                        title: 'Registro exitoso',
-                        text: res.data.message
+                        title: 'Datos Actualizados...',
+                        text: 'Vuelva a nuestro menú'
                     });
-                    //Redireccionar a productos,
-                    history.push('/')
+                    //Redireccionar a productos, modificar
+                    // props.history.push('/')
                 }
-                
 
-            });
+            })
     }
+
 
     //validar formulario
     const validarCliente = () => {
@@ -69,14 +84,17 @@ export const NuevoCliente = ({history}) =>{
         return valido;
     }
 
+
     return (
         <div className="container login-container">
             <div className="row">
                 <div className="col-lg-5 login-form-1">
-                    <h3>Registrarse</h3>
+                    <h2>Bienvenido {cliente.nombre} <span className="politica">(SOCIO)</span></h2>
+                    <h3>Puede actualizar sus datos</h3>
+                    <p className="message text-center">Recuerda colocar tu contraseña para validar tus datos</p>
                     <form
-                        //handleSubmit
-                        onSubmit={agregarCliente}
+                        //handleSuibmit
+                        onSubmit={actualizarCliente}
                     >
                         <div className="form-group">
                             <input
@@ -85,6 +103,7 @@ export const NuevoCliente = ({history}) =>{
                                 placeholder="Nombre"
                                 name="nombre"
                                 onChange={actualizarState}
+                                value={cliente.nombre}
                             />
                             <input
                                 type="text"
@@ -92,6 +111,7 @@ export const NuevoCliente = ({history}) =>{
                                 placeholder="Apellido"
                                 name="apellido"
                                 onChange={actualizarState}
+                                value={cliente.apellido}
                             />
                         </div>
                         <div className="form-group">
@@ -101,6 +121,7 @@ export const NuevoCliente = ({history}) =>{
                                 placeholder="D.N.I."
                                 name="dni"
                                 onChange={actualizarState}
+                                value={cliente.dni}
                             />
                             <input
                                 type="text"
@@ -108,6 +129,7 @@ export const NuevoCliente = ({history}) =>{
                                 placeholder="Teléfono"
                                 name="telefono"
                                 onChange={actualizarState}
+                                value={cliente.telefono}
                             />
                         </div>
                         <div className="form-group">
@@ -117,6 +139,7 @@ export const NuevoCliente = ({history}) =>{
                                 placeholder="Correo"
                                 name="email"
                                 onChange={actualizarState}
+                                value={cliente.email}
                             />
                             <input
                                 type="password"
@@ -129,9 +152,12 @@ export const NuevoCliente = ({history}) =>{
                         <input
                             type="submit"
                             className="btnSubmit"
-                            value="Login"
+                            value="Guardar"
                             disabled={validarCliente()}
                         />
+                        <p className="message text-center">Deseas Regresar?
+                        <Link to="/" className="politica">Menú Principal</Link>
+                        </p>
                     </form>
                 </div>
             </div>
@@ -139,6 +165,4 @@ export const NuevoCliente = ({history}) =>{
     )
 }
 
-//HOC es una funcion que toma un componente y return un new component
-
-export default withRouter(NuevoCliente);
+export default withRouter(ClienteIdScreen);
