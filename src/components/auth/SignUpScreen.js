@@ -28,7 +28,8 @@ export const SignUpScreen = ({history}) => {
     const onSubmit = e =>{
         e.preventDefault();
          //pasamos nuestro cliente del state
-        clienteAxios.post('/clientes', cliente)
+        // clienteAxios.post('/clientes', cliente)
+        clienteAxios.post('/signupcliente', cliente)
          //retornamos la promesa
          .then(res => {
              //validar si hay errores de rango
@@ -66,9 +67,12 @@ export const SignUpScreen = ({history}) => {
     }
 
     return (
-        <div className="container login-container">
+        <div className="container login-container-signup">
+            <img 
+            src="./assets/img/human-client.png"  alt="personal"/>
             <div className="row">
                 <div className="col-lg-5 login-form-1">
+                
                     <h3>Crear una cuenta</h3>
                     <form
                         //handleSubmit

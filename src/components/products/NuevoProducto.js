@@ -114,14 +114,6 @@ export const NuevoProducto = (props) => {
                                 step="0.50"
                                 onChange={leerInfoProducto}
                             />
-                            {/* <input
-                                id="my-file"
-                                type="file"
-                                className="form-control input-file"
-                                placeholder="Imagen"
-                                name="imagen"
-                                onChange={leerInfoProducto}
-                            /> */}
 
                         </div>
                         {/* file */}

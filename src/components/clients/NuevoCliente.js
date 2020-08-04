@@ -1,11 +1,15 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 
 import Swal from 'sweetalert2';
 
 import { withRouter } from 'react-router-dom';
 import clienteAxios from '../../config/axios';
+import { APIContext } from '../../context/APIContext';
 
 export const NuevoCliente = ({history}) =>{
+
+    const [auth ] = useContext(APIContext)
+
     //cliente=state guardarCliente=funcion guardar state
     const [cliente, guardarCliente] = useState({
         nombre: '',
@@ -69,8 +73,14 @@ export const NuevoCliente = ({history}) =>{
         return valido;
     }
 
+    //verificar autenticacion
+    if(!auth.auth) {
+        history.push('signin')
+    }
+
     return (
-        <div className="container login-container">
+        <div className="container login-container-signup">
+            <img src="./assets/img/human-client.png"  alt="personal"/>
             <div className="row">
                 <div className="col-lg-5 login-form-1">
                     <h3>Registrarse</h3>

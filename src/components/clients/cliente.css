@@ -21,19 +21,19 @@ a.fill {
 }
 
 .slide {
-  --color: #fd5e53;
-  --hover: #fa163f;
+  --color: #fd5e53!important;
+  --hover: #fa163f!important;
 }
 
 button.btn,
 a.btn {
-  color: var(--color);
+  color: var(--color)!important;
   transition: 0.25s;
 }
 .btn:hover, .btn:focus
 /* a:hover, a:focus */ {
-  border-color: var(--hover);
-  color: #fff;
+  border-color: var(--hover)!important;
+  color: #fff!important;
   /*quitar decoracion de textp a Link*/
   text-decoration: none;
 }
@@ -79,6 +79,7 @@ a.btn {
   border: 1px solid;
   border-radius: 20px;
   overflow: hidden;
+  border-color: var(--color)!important;
 }
 .fill:hover,
 .fill:focus {
@@ -89,7 +90,8 @@ a.btn {
 .up:focus {
   box-shadow: inset 0 -3.25em 0 0 var(--hover);
 }
-
+.btn.slide:hover,
+.btn.slide:focus,
 .slide:hover,
 .slide:focus {
   box-shadow: inset 6.5em 0 0 0 var(--hover);

@@ -61,6 +61,40 @@ export const LoginScreen = (props) => {
         }
     }
 
+    const iniciarPersonal = async e => {
+        e.preventDefault();
+        //autenticar usuario
+        try {
+            const respuesta = await clienteAxios.post('/signin', usuario);
+            //console.log(respuesta);
+            // extraer el token y colocarlo en localstorage
+            const { token } = respuesta.data;
+            localStorage.setItem('token', token);
+            //colocar en el state
+            guardarAuth({
+                token,
+                auth: true
+            })
+
+            //alerta
+            Swal.fire(
+                'Login Correcto',
+                'Has iniciado sesion',
+                'success'
+            )
+            //redireccionar
+            props.history.push('/pedidospersonal');//redireccionar
+
+        } catch (error) {
+            console.log(error);
+            Swal.fire({
+                type: 'error',
+                title: 'Hubo un error',
+                text: error.response.data.message
+            })
+        }
+    }
+
     const iniciarCliente = async e=>{
         e.preventDefault();
         try {
@@ -114,7 +148,8 @@ export const LoginScreen = (props) => {
         <div className="container login-container">
             <div className="row">
 
-                <div className="col-lg-5 login-form-1">
+                <div className="col-lg-4 login-form-1">
+                    <img src="./assets/img/human-client.png"  alt="personal"/>
                     <h3>Cliente</h3>
                     <form
                     onSubmit={iniciarCliente}
@@ -154,7 +189,8 @@ export const LoginScreen = (props) => {
 
                 </div>
 
-                <div className="col-lg-5 login-form-2">
+                <div className="col-lg-4 login-form-2">
+                <img src="./assets/img/human-admin.png"  alt="personal"/>
                     <h3>Administrador</h3>
                     <form
                         onSubmit={iniciarSesion}
@@ -191,6 +227,41 @@ export const LoginScreen = (props) => {
                         </div>
                     </form>
 
+                </div>
+
+                <div className="col-lg-4 login-form-1">
+                <img src="./assets/img/human-personal.png" alt="personal"/>
+                    <h3>Personal</h3>
+                    <form
+                        onSubmit={iniciarPersonal}
+                    >
+                        <div className="form-group">
+                            <input
+                                type="email"
+                                name="email"
+                                value={emailCliente}
+                                className="form-control"
+                                placeholder="Correo"
+                                onChange={leerDatos}
+                            />
+                        </div>
+                        <div className="form-group">
+                            <input
+                                type="password"
+                                name="password"
+                                value={passwordCliente}
+                                className="form-control"
+                                placeholder="Contraseña"
+                                onChange={leerDatos}
+                            />
+                        </div>
+                        <div className="form-group">
+                            <input
+                                type="submit"
+                                className="btnSubmit"
+                                value="Ingresar" />
+                        </div>
+                    </form>
                 </div>
 
 

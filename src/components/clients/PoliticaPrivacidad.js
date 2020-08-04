@@ -2,7 +2,7 @@ import React from 'react'
 
 export const PoliticaPrivacidad = (props) => {
 
-    console.log(props)
+    // console.log(props)
     const onClick = e =>{
         e.preventDefault();
 

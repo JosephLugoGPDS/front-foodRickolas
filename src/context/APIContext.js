@@ -3,7 +3,7 @@ import React, { useState } from 'react'
 //objeto, function
 const APIContext = React.createContext([ {}, () => {} ])
 
-const APIProvider = (props) => {
+const APIProvider = props => {
 
     //definir el state inicial
     const [ auth, guardarAuth ] = useState({

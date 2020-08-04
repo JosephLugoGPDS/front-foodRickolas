@@ -19,30 +19,42 @@ export const Navbar = (props) => {
 
     }
 
+    if(!auth.auth) 
     return (
-        <div>
+        <nav className="topnav fixed-mobile">
+                <div className="container-nav">
+                    <div className="claseTitular"
+                        id="miTopnav">
+                        <Link to={"/"}><img src="assets/img/logo.webp" alt="Menu Nav" /></Link>
+
+                        <Link to={"/productos"}>Menú</Link>
+
+                    </div>
+                </div>
+            </nav>
+    )
+                       
+
+    return (
+    
             <nav className="topnav fixed-mobile">
                 <div className="container-nav">
                     <div className="claseTitular"
                         id="miTopnav">
 
                         <Link to={"/"}><img src="assets/img/logo.webp" alt="Menu Nav" /></Link>
-                        {auth.auth ? (
-                            <Link to={"/clientes"}>Clientes</Link>
-                        ) : null}
+                        
+                        <Link to={"/clientes"}>Clientes</Link>
+                        
+                        <Link to={"/pedidos"}>Pedidos</Link>
 
                         <Link to={"/productos"}>Menú</Link>
-
-                        {auth.auth ? (
-                            <Link to={"/pedidos"}>Pedidos</Link>
-                        ) : null}
-
-                        {auth.auth ? (
+                        
                             <button
                                 className="btn-signoff"
                                 onClick={signOff}
                             >Cerrar Sesión</button>
-                        ) : null}
+                        
 
                         <Link to={"/"}
                             className="icon"
@@ -53,7 +65,7 @@ export const Navbar = (props) => {
                     </div>
                 </div>
             </nav>
-        </div>
+        
     )
 }
 

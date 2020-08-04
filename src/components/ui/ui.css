@@ -47,7 +47,7 @@ body {
 .topnav a {
   float: left;
   display: block;
-  color: #7028e4;
+  color: #e42867;
   text-align: center;
   padding: 18px 16px;
   text-decoration: none;
@@ -61,12 +61,12 @@ body {
 
 /* Change the color of links on hover */
 .topnav a:hover {
-  color: #e42867;
+  color: #7028e4;
 }
 
 /* falta arreglar el routerlink*/
 .topnav a.active {
-  background-color: #e42867;
+  background-color: #7028e4;
   color: white;
 }
 
@@ -154,16 +154,18 @@ body {
   height: 100%;
   width: 100%;
   fill: #ffffff;
+  /* color: rgb(0, 0, 0); */
 }
 /*Clases*/
 .hero {
   background-image: linear-gradient(
       45deg,
-      rgba(240, 255, 154, 0.4) 0%,
-      rgba(250, 246, 196, 0.3) 99%,
-      rgba(145, 9, 187, 0.8) 100%
+      rgba(0, 0, 0, 0.6) 30%,
+      rgba(0, 0, 0, 0.2) 99%,
+      /* rgba(192, 180, 11, 0.8) 100% */
+      rgba(0, 0, 0, 0.6) 100%
     ),
-    url("/assets/img/portada2.jpg");
+    url("/assets/img/portada3.jpg");
   width: 100%;
   height: 650px;
   background-repeat: no-repeat;

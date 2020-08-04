@@ -1,8 +1,10 @@
 import React from 'react'
+import { Link } from 'react-router-dom';
 
 export const ProductoScreenCliente = ({producto}) => {
     //aplicamos destruturing a producto
     const {nombre, imagen, categoria, estado} = producto;
+    const id = localStorage.getItem('_id');
 
     //si estado es true/false mostrar/agotado
     const stock = () =>{
@@ -40,10 +42,11 @@ export const ProductoScreenCliente = ({producto}) => {
                 </div>
                 <div className="cta-products">
                     <div className="price">{stock()}</div>
-                    <button 
+                    <Link
+                    to={`/pedidos/nuevo/${id}`} 
                     className="btn"
                     disabled={verificarProducto()}
-                    >Add to cart</button>
+                    >Add to cart</Link>
                 </div>
             </div>
         </div>

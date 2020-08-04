@@ -1,11 +1,13 @@
 import React from 'react'
 import { AppRouter } from './routes/AppRouter'
 
+function FoodApp() {
 
-export const FoodApp = () => {
     return (
-        <div>
+        
             <AppRouter />
-        </div>
+        
     )
 }
+export default FoodApp;
+

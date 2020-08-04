@@ -1,4 +1,4 @@
-import React, { useState, useEffect, Fragment, useContext } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { Link, withRouter } from 'react-router-dom';
 // importar cliente axios
 import clienteAxios from '../../config/axios';
@@ -51,22 +51,23 @@ export const Productos = (props) => {
             props.history.push('/signin')
         }
 
-    }, [auth, props.history]);//agrego la dependencia productos, para que recargue la pagina al eliminar
+    }, [auth.token, props.history]);//agrego la dependencia productos, para que recargue la pagina al eliminar
     //pero si se agrega la dependencia
     //se tiene que usar un cleanUp
 
     //Si el state esta como false
-    if (!auth.auth) {
-        props.history.push('/signin');
-    }
-
+    
+    if (!auth.auth) 
+        {
+            props.history.push('/signin');
+        } 
+    
     //Spinner de carga
     if (!productos.length) return <Spinner />
 
-
-
     return (
-        <Fragment>
+            
+        <div>
 
             <Navbar />
             <div className="container">
@@ -90,7 +91,8 @@ export const Productos = (props) => {
                     }
                 </div>
             </div>
-        </Fragment>
+        </div>
+            
     )
 }
 

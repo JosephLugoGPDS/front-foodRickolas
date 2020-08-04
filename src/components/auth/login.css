@@ -1,5 +1,15 @@
 .login-container {
-  margin: 10% auto;
+  margin: 0 auto;
+}
+.login-container-signup img{
+  position: absolute;
+}
+
+.login-form-1 img{
+  width: 50%;
+}
+.login-form-2 img{
+  width: 45%;
 }
 
 /*Para el file*/
@@ -64,6 +74,9 @@
   color: #fff;
 }
 .login-container form {
+  padding: 5%;
+}
+.login-container-signup form {
   padding: 5%;
 }
 .btnSubmit {

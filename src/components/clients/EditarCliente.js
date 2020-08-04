@@ -94,9 +94,10 @@ export const EditarCliente = (props) => {
     }
 
     return (
-        <div className="container login-container">
+        <div className="container login-container-signup">
             <div className="row">
                 <div className="col-lg-5 login-form-1">
+                <img src="./assets/img/human-admin.png"  alt="personal"/>
                     <h3>Actualizar Datos</h3>
                     <form
                         //handleSuibmit

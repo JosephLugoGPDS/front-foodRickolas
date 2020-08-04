@@ -50,14 +50,12 @@ export const Clientes = (props) => {
         } else {
             props.history.push('/signin');
         }
-    }, [auth, props.history]);
+    }, [clientes, auth.token, props.history]);
 
     //Si el state esta como false
     if (!auth.auth) {
         props.history.push('/signin');
     }
-
-
 
     //Spinner de carga si hay clientes/s
     if (!clientes.length) return <Spinner />

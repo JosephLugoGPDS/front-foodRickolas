@@ -86,11 +86,15 @@ export const ClienteIdScreen = () => {
 
 
     return (
-        <div className="container login-container">
+        <div className="container login-container-signup">
+            
+            <img src="/assets/img/human-client.png"  alt="personal"/>
             <div className="row">
-                <div className="col-lg-5 login-form-1">
-                    <h2>Bienvenido {cliente.nombre} <span className="politica">(SOCIO)</span></h2>
-                    <h3>Puede actualizar sus datos</h3>
+                <div className="col-lg-6 login-form-1">
+                    <h2>Bienvenido {cliente.nombre} 
+                    {/* <span className="politica">(SOCIO)</span> */}
+                    </h2>
+                    {/* <h3>Puede actualizar sus datos</h3> */}
                     <p className="message text-center">Recuerda colocar tu contraseña para validar tus datos</p>
                     <form
                         //handleSuibmit

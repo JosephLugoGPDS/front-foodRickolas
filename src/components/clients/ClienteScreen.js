@@ -46,7 +46,7 @@ export const ClienteScreen = ({ cliente, consultarApi }) => {
     }
 
     return (
-        <div className="client col-lg-6">
+    <div className="client col-lg-6">
             <h4><span>{nombre} {apellido}</span></h4>
             <table>
                 <thead>
@@ -69,7 +69,6 @@ export const ClienteScreen = ({ cliente, consultarApi }) => {
             <div className="buttons">
                 {/* <button className="fill">Fill In</button> */}
                 <Link to={`/clientes/editar/${_id}`} className="btn up">Editar</Link>
-                <Link to={`/pedidos/nuevo/${_id}`} className="btn fill">Pedido</Link>
                 <button 
                 className="btn slide"
                 //el parentesis hace que se realice al instante

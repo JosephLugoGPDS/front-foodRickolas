@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { FoodApp } from './FoodApp';
+import  FoodApp  from './FoodApp';
 
 
 ReactDOM.render(
