@@ -1,4 +1,5 @@
 import React from 'react'
+import { withRouter } from 'react-router-dom';
 
 export const PoliticaPrivacidad = (props) => {
 
@@ -50,7 +51,7 @@ export const PoliticaPrivacidad = (props) => {
             <p>FoodRickolas Se reserva el derecho de cambiar los términos de la presente Política de Privacidad en cualquier momento.</p>
             <input
                             type="submit"
-                            className="btnSubmit"
+                            className="btnSubmit btn-outline-primary"
                             value="Acepto"
                             onClick={onClick}
                             
@@ -60,4 +61,4 @@ export const PoliticaPrivacidad = (props) => {
     );
 }
 
-export default PoliticaPrivacidad;
+export default withRouter(PoliticaPrivacidad);

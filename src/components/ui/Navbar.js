@@ -5,6 +5,7 @@ import { APIContext } from '../../context/APIContext'
 export const Navbar = (props) => {
 
     const [auth, guardarAuth] = useContext(APIContext);
+    
 
     const signOff = () => {
         //auth.auth = false para remover el token
@@ -12,10 +13,11 @@ export const Navbar = (props) => {
             token: '',
             auth: false
         });
+        
+        //redireccionamos
+        // props.history.push('/');
         //Eliminamos tambien el token del localStorage
         localStorage.setItem('token', '');
-        //redireccionamos
-        props.history.push('/');
 
     }
 
@@ -27,7 +29,7 @@ export const Navbar = (props) => {
                         id="miTopnav">
                         <Link to={"/"}><img src="assets/img/logo.webp" alt="Menu Nav" /></Link>
 
-                        <Link to={"/productos"}>Menú</Link>
+                        {/* <Link to={"/productos"}>Menú</Link> */}
 
                     </div>
                 </div>
@@ -50,10 +52,11 @@ export const Navbar = (props) => {
 
                         <Link to={"/productos"}>Menú</Link>
                         
-                            <button
+                            <Link
+                            to={"/"}
                                 className="btn-signoff"
                                 onClick={signOff}
-                            >Cerrar Sesión</button>
+                            >Cerrar Sesión</Link>
                         
 
                         <Link to={"/"}

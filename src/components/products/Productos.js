@@ -10,6 +10,7 @@ import Navbar from '../ui/Navbar';
 import { Spinner } from '../ui/Spinner';
 //context
 import { APIContext } from '../../context/APIContext';
+import { FooterUsuario } from '../ui/FooterUsuario';
 
 export const Productos = (props) => {
 
@@ -60,6 +61,7 @@ export const Productos = (props) => {
     if (!auth.auth) 
         {
             props.history.push('/signin');
+            
         } 
     
     //Spinner de carga
@@ -91,6 +93,7 @@ export const Productos = (props) => {
                     }
                 </div>
             </div>
+            <FooterUsuario/>
         </div>
             
     )

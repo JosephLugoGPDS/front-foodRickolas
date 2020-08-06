@@ -5,6 +5,7 @@ import { Spinner } from '../ui/Spinner';
 import clienteAxios from '../../config/axios';
 // import ProductoScreen from './ProductoScreen';
 import { ProductoScreenCliente } from './ProductoScreenCliente';
+import { FooterCliente } from '../ui/FooterCliente';
 
 
 export const ProductosCliente = () => {
@@ -56,6 +57,7 @@ export const ProductosCliente = () => {
                     }
                 </div>
             </div>
+            <FooterCliente/>
         </Fragment>
     )
 }

@@ -3,7 +3,7 @@ import { withRouter, Link } from 'react-router-dom';
 import Swal from 'sweetalert2';
 import clienteAxios from '../../config/axios';
 
-export const ClienteIdScreen = () => {
+export const ClienteIdScreen = (props) => {
     //obtener id
     // console.log(localStorage.getItem('_id'))
     const id = localStorage._id;
@@ -23,7 +23,7 @@ export const ClienteIdScreen = () => {
     const consultarAPI = useCallback(
         async () => {
             const clienteConsulta = await clienteAxios.get(`/clientes/${id}`);
-            console.log(clienteConsulta.data);
+            // console.log(clienteConsulta.data);
             //colocar la data en el state
             datosCliente(clienteConsulta.data);
         }, [id]
@@ -67,7 +67,7 @@ export const ClienteIdScreen = () => {
                         text: 'Vuelva a nuestro menú'
                     });
                     //Redireccionar a productos, modificar
-                    // props.history.push('/')
+                    props.history.push('/productoscliente')
                 }
 
             })
@@ -86,12 +86,19 @@ export const ClienteIdScreen = () => {
 
 
     return (
+        <div>
+            <Link
+            to={"/productoscliente"}
+            className="btn-last btn-return"
+            >
+                <i className='bx bx-caret-left-circle' ></i>
+            </Link>
         <div className="container login-container-signup">
             
             <img src="/assets/img/human-client.png"  alt="personal"/>
             <div className="row">
                 <div className="col-lg-6 login-form-1">
-                    <h2>Bienvenido {cliente.nombre} 
+                    <h2 className="text-center">Bienvenido {cliente.nombre} 
                     {/* <span className="politica">(SOCIO)</span> */}
                     </h2>
                     {/* <h3>Puede actualizar sus datos</h3> */}
@@ -165,6 +172,7 @@ export const ClienteIdScreen = () => {
                     </form>
                 </div>
             </div>
+        </div>
         </div>
     )
 }

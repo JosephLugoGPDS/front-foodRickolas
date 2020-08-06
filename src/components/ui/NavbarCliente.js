@@ -2,20 +2,20 @@ import React, { useContext } from 'react'
 import { Link, withRouter } from 'react-router-dom'
 import { APIContext } from '../../context/APIContext';
 
-export const Navbar = (props) => {
+export const NavbarCliente = (props) => {
 
     const [auth, guardarAuth] = useContext(APIContext);
-
+    console.log(auth.auth)
     const signOff = () => {
         //auth.auth = false para remover el token
         guardarAuth({
             auth: false
         });
         //Limpiamos el localStorage con el id
-        // localStorage.removeItem(_id);
+        //localStorage.removeItem(_id);
         //redireccionamos
         props.history.push('/');
-        console.log(auth.auth);
+        // console.log(auth.auth);
 
     }
 
@@ -28,8 +28,8 @@ export const Navbar = (props) => {
 
                         <Link to={"/"}><img src="assets/img/logo.webp" alt="Menu Nav" /></Link>
                         
-                            <Link to={"/productos"}>Menú</Link>
-                            <Link to={"/pedidos"}>Pedidos</Link>
+                            <Link to={"/productoscliente"}>Menú</Link>
+                            {/* <Link to={"/pedidos"}>Pedidos</Link> */}
                             <Link to={"/cliente/:id"}>Cliente</Link>
 
                             <button
@@ -51,4 +51,4 @@ export const Navbar = (props) => {
     )
 }
 
-export default withRouter(Navbar);
+export default withRouter(NavbarCliente);

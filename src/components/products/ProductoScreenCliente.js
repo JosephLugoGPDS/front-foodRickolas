@@ -14,10 +14,6 @@ export const ProductoScreenCliente = ({producto}) => {
             return 'AGOTADO';
         }
     }
-    //estado T/F Button disable: F/T
-    const verificarProducto = () => {
-        return !estado;
-     }
 
     return (
         <div className="col-lg-6">
@@ -42,11 +38,17 @@ export const ProductoScreenCliente = ({producto}) => {
                 </div>
                 <div className="cta-products">
                     <div className="price">{stock()}</div>
-                    <Link
-                    to={`/pedidos/nuevo/${id}`} 
-                    className="btn"
-                    disabled={verificarProducto()}
-                    >Add to cart</Link>
+                    
+                    {
+                        estado ? (
+                            <Link
+                        
+                        to={`/pedidos/nuevo/${id}`} 
+                        className="btn btn-up"
+                        >agregar al carrito</Link>
+                        ) : null
+                    }
+                    
                 </div>
             </div>
         </div>

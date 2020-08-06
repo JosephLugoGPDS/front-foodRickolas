@@ -47,12 +47,27 @@ body {
 .topnav a {
   float: left;
   display: block;
-  color: #e42867;
+  color: #7028e4;
   text-align: center;
   padding: 18px 16px;
   text-decoration: none;
   font-size: 20px;
   font-weight: 600;
+}
+.topnav a.inicio {
+  float: left;
+  display: block;
+  color: #fff;
+  text-align: center;
+  padding: 18px 16px;
+  text-decoration: none;
+  font-size: 24px;
+  font-weight: 600;
+}
+.topnav a.inicio:hover {
+
+  color: #fa163f;
+ 
 }
 
 .topnav a img {
@@ -133,7 +148,7 @@ body {
 /* Configuracion wave quitando style del wave */
 .wave-svg path {
   stroke: none;
-  fill: #ffffff;
+  fill: #fff;
 }
 
 .wave-configuration-react {
@@ -210,7 +225,8 @@ body {
 }
 
 /****Cerrar sesión***********/
-button.btn-signoff {
+button.btn-signoff,
+a.btn-signoff {
   border: none;
   font-size: 18px;
   margin-top: 15px;
@@ -223,12 +239,14 @@ button.btn-signoff {
   color: #ffffff;
   cursor: pointer;
 }
-button.btn-signoff:hover {
+button.btn-signoff:hover, 
+a.btn-signoff:hover{
   background: #fa163f;
   color: #fff;
 }
 @media screen and (max-width: 1000px) {
-  button.btn-signoff {
+  button.btn-signoff,
+  a.btn-signoff {
     background: #fa163f;
   }
 }

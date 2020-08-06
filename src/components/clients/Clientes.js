@@ -13,6 +13,7 @@ import { Spinner } from '../ui/Spinner';
 
 //importar context
 import { APIContext } from '../../context/APIContext';
+import { FooterUsuario } from '../ui/FooterUsuario';
 
 
 
@@ -80,6 +81,7 @@ export const Clientes = (props) => {
                     }
                 </div>
             </div>
+            <FooterUsuario/>
         </Fragment>
     )
 }

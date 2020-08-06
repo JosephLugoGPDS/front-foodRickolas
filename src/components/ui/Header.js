@@ -1,11 +1,12 @@
 import React from 'react'
-import { Navbar } from './Navbar'
+// import { Navbar } from './Navbar'
+import NavbarInicio from './NavbarInicio'
 
 export const Header = () => {
     return (
         <div>
             <header className="hero">
-            <Navbar />
+            <NavbarInicio />
             <div className="texts-hero">
                 <h1 className="font-weight-bold"><span className="color">Bienvenido</span> a FoodRickolas</h1>
                 <p>El mejor sitio para ti</p>

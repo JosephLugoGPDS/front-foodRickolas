@@ -4,6 +4,7 @@ import { Header } from '../ui/Header'
 import { Home } from '../ui/Home'
 import Modal from '../ui/Modal'
 import "../ui/Modal.css"
+import { Link } from 'react-router-dom'
 
 
 export const FoodScreen = () => {
@@ -32,7 +33,10 @@ export const FoodScreen = () => {
                             <i className="fas fa-times"></i>
                             </button>
                         </h1>
-                        <img src="assets/img/food.webp" alt="2" />                      
+                        <Link to={"/signin"}>
+                        <img src="assets/img/modal1.jpg" alt="modal" />
+                        </Link>
+                                              
                     </div>
             </Modal>
 

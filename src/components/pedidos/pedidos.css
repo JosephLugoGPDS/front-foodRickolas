@@ -406,9 +406,11 @@ main .pedido-card + .pedido-card {
     background-color: #efefee;
     border-radius: 50%;
     overflow: hidden;
+    
 }
 .product-row-item img {
     width: 40px;
+    
 }
 
 .font-weight-bold span{

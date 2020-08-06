@@ -35,6 +35,7 @@ import { APIContext, APIProvider } from '../context/APIContext';
 //Productos cliente
 import { ProductosCliente } from '../components/products/ProductosCliente';
 import { PedidosPersonal } from '../components/pedidos/PedidosPersonal';
+import { PoliticasDelivery } from '../components/pedidos/PoliticasDelivery';
 
 export const AppRouter = () => {
 
@@ -44,7 +45,7 @@ export const AppRouter = () => {
     return (
         <Router>
             <Fragment>
-                <APIProvider value={[auth, guardarAuth]}>
+                    <APIProvider value={[auth, guardarAuth]}>
 
                     <Switch>
 
@@ -56,6 +57,7 @@ export const AppRouter = () => {
                         <Route exact path="/clientes/nuevo" component={NuevoCliente} />
                         <Route exact path="/clientes/editar/:id" component={EditarCliente} />
                         <Route exact path="/politica" component={PoliticaPrivacidad} />
+                        <Route exact path="/politicadelivery" component={PoliticasDelivery} />
 
                         {/* Client */}
                         <Route exact path="/cliente/:id" component={ClienteIdScreen} />

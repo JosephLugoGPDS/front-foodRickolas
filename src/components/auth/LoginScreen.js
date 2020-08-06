@@ -21,10 +21,13 @@ export const LoginScreen = (props) => {
     });
     //State con los datos del formulario
     const [cliente, guardarCliente] = useState({});
+    //State con los datos del formulario
+    const [personal, guardarPersonal] = useState({});
 
 
     const { email, password } = usuario;
     const {emailCliente, passwordCliente } = cliente;
+    const {emailPersonal, passwordPersonal } = personal;
 
     //Iniciar sesion en el servidor
     const iniciarSesion = async e => {
@@ -65,7 +68,7 @@ export const LoginScreen = (props) => {
         e.preventDefault();
         //autenticar usuario
         try {
-            const respuesta = await clienteAxios.post('/signin', usuario);
+            const respuesta = await clienteAxios.post('/signin', personal);
             //console.log(respuesta);
             // extraer el token y colocarlo en localstorage
             const { token } = respuesta.data;
@@ -143,9 +146,23 @@ export const LoginScreen = (props) => {
             [e.target.name]: e.target.value
         })
     }
+    //almacenar lo que esceribe el Personal en el state
+    const leerPersonal = e => {
+        guardarPersonal({
+            ...personal,
+            [e.target.name]: e.target.value
+        })
+    }
 
     return (
-        <div className="container login-container">
+        <div>
+            <Link
+            to={"/"}
+            className="btn-last btn-return"
+            >
+                <i className='bx bx-caret-left-circle' ></i>
+            </Link>
+            <div className="container login-container">
             <div className="row">
 
                 <div className="col-lg-4 login-form-1">
@@ -239,20 +256,20 @@ export const LoginScreen = (props) => {
                             <input
                                 type="email"
                                 name="email"
-                                value={emailCliente}
+                                value={emailPersonal}
                                 className="form-control"
                                 placeholder="Correo"
-                                onChange={leerDatos}
+                                onChange={leerPersonal}
                             />
                         </div>
                         <div className="form-group">
                             <input
                                 type="password"
                                 name="password"
-                                value={passwordCliente}
+                                value={passwordPersonal}
                                 className="form-control"
                                 placeholder="Contraseña"
-                                onChange={leerDatos}
+                                onChange={leerPersonal}
                             />
                         </div>
                         <div className="form-group">
@@ -266,6 +283,7 @@ export const LoginScreen = (props) => {
 
 
             </div>
+        </div>
         </div>
 
     )

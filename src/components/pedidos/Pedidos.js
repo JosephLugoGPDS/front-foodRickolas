@@ -1,26 +1,67 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, Fragment } from 'react'
 import clienteAxios from '../../config/axios';
 import PedidoScreen from './PedidoScreen';
 import { Spinner } from '../ui/Spinner';
 import { Navbar } from '../ui/Navbar';
+import { useContext } from 'react';
+import { APIContext } from '../../context/APIContext';
+import { withRouter } from 'react-router-dom';
+import { FooterUsuario } from '../ui/FooterUsuario';
 
-export const Pedidos = () => {
+export const Pedidos = (props) => {
+
+    console.log(props)
 
     const [pedidos, guardarPedidos] = useState([]);
 
+    const [auth] = useContext(APIContext);
+
+    // useEffect(() => {
+    //     const consultarApi = async () => {
+    //         //obtener los pedidos
+    //         const resultado = await clienteAxios.get('/pedidos')
+    //         guardarPedidos(resultado.data);
+    //     }
+    //     consultarApi();
+    // }, [])
+
+    //useEffect para consultar la API cuando cargue
     useEffect(() => {
-        const consultarApi = async () => {
-            //obtener los pedidos
-            const resultado = await clienteAxios.get('/pedidos')
-            guardarPedidos(resultado.data);
+        if (auth.token !== '') {
+            // Query a la API
+            const consultarApi = async () => {
+                try {
+                    const pedidosConsulta = await clienteAxios.get('/pedidos', {
+                        headers: {
+                            Authorization: `Bearer ${auth.token}`
+                        }
+                    });//'/productos' para ver todos
+                    guardarPedidos(pedidosConsulta.data);
+                    // console.log(productosConsulta.data);
+
+                } catch (error) {
+                    if (error.response.status === 500) {
+                        props.history.push('/signin')
+                    }
+                }
+            }//call to API
+            consultarApi();
+        } else {
+            props.history.push('/signin')
         }
-        consultarApi();
-    }, [])
+
+    }, [pedidos,auth.token,props.history]);
+
+    if (!auth.auth) 
+        {
+            props.history.push('/signin');
+            
+        } 
 
     if(!pedidos.length) return <Spinner />
 
     return (
-        <div>
+        <Fragment>
         <Navbar />
         <main>
             Pedidos
@@ -35,6 +76,9 @@ export const Pedidos = () => {
             {/* </ul> */}
         {/* </div> */}
         </main>
-        </div>
+        <FooterUsuario/>
+        </Fragment>
     )
 }
+
+export default withRouter(Pedidos);

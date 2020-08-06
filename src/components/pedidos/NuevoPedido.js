@@ -184,15 +184,20 @@ export const NuevoPedido = (props) => {
         }
 
         //Redireccionar
-        props.history.push('/')
+        props.history.push('/productoscliente')
 
     }
 
+    const actionClose = ()=>{
+        props.history.push('/productoscliente')
+    }
 
 
     return (
-        <div className="container">
-
+        <div className="container container-img-user">
+            
+            <img src="/assets/img/human-client.png"  alt="personal"/>
+            
             <form className="client contact-form">
                 <h4 className="text-center">Datos del Pedido        </h4>
                     <p className="text-center">
@@ -227,7 +232,9 @@ export const NuevoPedido = (props) => {
                 <h1 className="cart__title">
                 <i className='bx bxs-cart' ></i>Carrito de compras
                 {/* <button (click)="actionBtnClose()"> */}
-                    <button>
+                    <button
+                    onClick={()=>actionClose()}>
+                        
                         <i className="fas fa-times"></i>
                     </button>
                 </h1>

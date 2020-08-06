@@ -76,7 +76,7 @@ export const EditarCliente = (props) => {
                         text: 'Vuelva a nuestro menú'
                     });
                     //Redireccionar a productos, modificar
-                    props.history.push('/')
+                    props.history.push('/clientes')
                 }
 
             })
@@ -94,11 +94,23 @@ export const EditarCliente = (props) => {
     }
 
     return (
+        <div>
+            <Link
+            to={"/"}
+            className="btn-last btn-return"
+            >
+                <i className='bx bx-caret-left-circle' ></i>
+            </Link>
         <div className="container login-container-signup">
+            
+            <img src="/assets/img/human-admin.png"  alt="personal"/>
             <div className="row">
-                <div className="col-lg-5 login-form-1">
-                <img src="./assets/img/human-admin.png"  alt="personal"/>
-                    <h3>Actualizar Datos</h3>
+                <div className="col-lg-6 login-form-1 text-center">
+                    <h2>Bienvenido Administrador
+                    {/* <span className="politica">(SOCIO)</span> */}
+                    </h2>
+                    {/* <h3>Puede actualizar sus datos</h3> */}
+                    {/* <p className="message text-center">Recuerda colocar tu contraseña para validar tus datos</p> */}
                     <form
                         //handleSuibmit
                         onSubmit={actualizarCliente}
@@ -148,13 +160,13 @@ export const EditarCliente = (props) => {
                                 onChange={actualizarState}
                                 value={cliente.email}
                             />
-                            <input
+                            {/* <input
                                 type="password"
                                 className="form-control"
                                 placeholder="Contraseña"
                                 name="password"
                                 onChange={actualizarState}
-                            />
+                            /> */}
                         </div>
                         <input
                             type="submit"
@@ -162,12 +174,11 @@ export const EditarCliente = (props) => {
                             value="Guardar"
                             disabled={validarCliente()}
                         />
-                        <p className="message text-center">Deseas Regresar?
-                        <Link to="/" className="politica">Menú Principal</Link>
-                        </p>
+                        
                     </form>
                 </div>
             </div>
+        </div>
         </div>
     )
 }

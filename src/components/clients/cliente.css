@@ -22,13 +22,22 @@ a.fill {
 
 .slide {
   --color: #fd5e53!important;
-  --hover: #fa163f!important;
+  --hover: #fa163f;
 }
 
 button.btn,
 a.btn {
   color: var(--color)!important;
   transition: 0.25s;
+}
+
+.btn.slide:hover,
+.btn.slide:focus {
+  border-color: #fa163f!important;
+  color: #fa163f;
+  transition: 0.25s;
+  text-decoration: none;
+  color: #fff;
 }
 .btn:hover, .btn:focus
 /* a:hover, a:focus */ {
@@ -94,7 +103,7 @@ a.btn {
 .btn.slide:focus,
 .slide:hover,
 .slide:focus {
-  box-shadow: inset 6.5em 0 0 0 var(--hover);
+  box-shadow: inset 6.5em 0 0 0 var(--hover)!important;
 }
 
 /*====================================================

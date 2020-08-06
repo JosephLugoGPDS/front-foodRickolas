@@ -13,9 +13,10 @@ export const NavbarPersonal = (props) => {
             auth: false
         });
         //Eliminamos tambien el token del localStorage
-        localStorage.setItem('token', '');
+        // localStorage.setItem('token', '');
         //redireccionamos
-        props.history.push('/');
+        // props.history.push('/');
+        // console.log(props)
 
     }
 
@@ -28,17 +29,18 @@ export const NavbarPersonal = (props) => {
 
                         <Link to={"/"}><img src="assets/img/logo.webp" alt="Menu Nav" /></Link>
 
-                        <Link to={"/productos"}>Menú</Link>
+                        {/* <Link to={"/productos"}>Menú</Link> */}
 
                         {auth.auth ? (
                             <Link to={"/pedidos"}>Pedidos</Link>
                         ) : null}
 
                         {auth.auth ? (
-                            <button
+                            <Link
+                                to="/"
                                 className="btn-signoff"
                                 onClick={signOff}
-                            >Cerrar Sesión</button>
+                            >Cerrar Sesión</Link>
                         ) : null}
 
                         <Link to={"/"}

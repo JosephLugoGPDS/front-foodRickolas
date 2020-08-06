@@ -18,6 +18,13 @@ export const Footer = () => {
                     <p>
                         Somos una empresa familiar fundada el 31 de julio de 2016, con alto conocimiento en la producción y venta de comidas rápidas, la experiencia adquirida a través de los años, nos da el conocimiento para valorar la importancia del cliente, quien es el motivo de nuestros esfuerzos, y así llegar a ustedes con la seguridad de poder ofrecerles nuestros productos de excelente calidad con responsabilidad y cumplimiento. Contamos con excelente calidad humana que les brindara la atención apropiada, para de esta manera poder llegar a saber y entender sus gustos y necesidades. El hecho de contar con ustedes como nuestros clientes es motivo de satisfacción.
                         </p>
+                        <h1>
+                        <i className='bx bxl-twitter'></i>
+                        <i className='bx bxl-facebook'></i>
+                        <i className='bx bxl-instagram' ></i>
+                        <i className='bx bxl-youtube' ></i>
+                        </h1>
+
 
                 </div>
             </footer>
