@@ -3,9 +3,12 @@
 
 # DESKTOP INICIO
 ![desktop-inicio](https://user-images.githubusercontent.com/66711662/89737790-8d7d1f80-da39-11ea-8864-74ad688a9992.png)
+# LOGIN DEKTOP
+![desktop-login](https://user-images.githubusercontent.com/66711662/89737964-bb169880-da3a-11ea-9f4c-5910f04e2119.png)
+# LOGIN MOBILE
+![mobile-login](https://user-images.githubusercontent.com/66711662/89737965-bc47c580-da3a-11ea-9840-24832b9023e3.png)
 
-
-Backend realizado con node y express
+  Frontend realizado con node y express
 --Joseph
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
